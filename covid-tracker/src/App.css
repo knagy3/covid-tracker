@@ -2,10 +2,6 @@
   margin: 0;
 }
 
-body {
-  background-color: #f5f6fa;
-}
-
 .app {
   display: flex;
   justify-content: space-evenly;
@@ -35,10 +31,19 @@ body {
 }
 
 .app__left {
-  flex: 0.8;
+  flex: 0.85;
 }
 
-.app__information > h3 {
+.app__right,
+.app__information {
+  display: flex;
+  flex-direction: column;
+}
+.app__graph {
+  display: flex;
+  flex-grow: 1;
+}
+s.app__information > h3 {
   color: #6a5d5d;
   font-weight: 400;
   font-size: 1.5rem;
@@ -50,7 +55,7 @@ body {
 }
 
 /*it makes the design responsive*/
-@media (max-width: 900px) {
+@media (max-width: 930px) {
   .app {
     flex-direction: column;
   }

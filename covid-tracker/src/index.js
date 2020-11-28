@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Footer from "./Footer";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <div className="body__app">
+      <App />
+    </div>
+    <Footer/>
   </React.StrictMode>,
   document.getElementById('root')
 );

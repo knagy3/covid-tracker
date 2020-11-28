@@ -3,12 +3,12 @@ import "./InfoBox.css";
 import { Card, CardContent, Typography } from "@material-ui/core";
 
 function InfoBox({ title, cases, total, active, isRed, ...props }) {
+    //...props means any props which goes here is inside props like onClick
     return (
         <Card
             onClick={props.onClick}
-            className={`infoBox ${active && "infoBox--selected"} ${
-                isRed && "infoBox--red"
-            }`}
+            className={`infoBox ${active && "infoBox--selected"} 
+                ${isRed && "infoBox--red"}`}
         >
             <CardContent>
                 <Typography color="textSecondary" gutterBottom>

@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 import {MenuItem, FormControl, Select, Card, CardContent} from "@material-ui/core";
 import InfoBox from "./InfoBox";
-import { sortData } from "./util";
+import { sortData, prettyPrintStat } from "./util";
 import numeral from "numeral";
 import Map from "./Map";
 import Table from "./Table";
 import LineGraph from "./LineGraph";
 import "leaflet/dist/leaflet.css";
 
-const App = () => {
+
+function App() {
   // States: short term memories/REACT variables
   const [country, setInputCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
@@ -17,7 +18,7 @@ const App = () => {
   const [casesType, setCasesType] = useState("cases");
   const [tableData, setTableData] = useState([]);
   const [mapCountries, setMapCountries] = useState([]);
-  const [mapCenter, setMapCenter] = useState([40.80746, 35.4796 ]);
+  const [mapCenter, setMapCenter] = useState([40.80746, 35.4796]);
   const [mapZoom, setMapZoom] = useState(3);
 
   //get-set the country info from the API for the init worldwide
@@ -66,9 +67,7 @@ const App = () => {
       setMapZoom(4);
       setMapCenter([data?.countryInfo?.lat, data?.countryInfo?.long]);
     });
-    //console.log('INFO:', countryInfo);
-    
-    //console.log('MAP CENTER1: ', mapCenter);
+
   };
 
   
@@ -99,14 +98,14 @@ const App = () => {
               title="Coronavirus Cases"
               isRed
               active={casesType === "cases"}
-              cases={countryInfo.todayCases}
+              cases={prettyPrintStat(countryInfo.todayCases)}
               total={numeral(countryInfo.cases).format("0.0a")}
             />
             <InfoBox
               onClick={(e) => setCasesType("recovered")}
               title="Recovered"
               active={casesType === "recovered"}
-              cases={countryInfo.todayRecovered}
+              cases={prettyPrintStat(countryInfo.todayRecovered)}
               total={numeral(countryInfo.recovered).format("0.0a")}
             />
             <InfoBox
@@ -114,7 +113,7 @@ const App = () => {
               title="Deaths"
               isRed
               active={casesType === "deaths"}
-              cases={countryInfo.todayDeaths}
+              cases={prettyPrintStat(countryInfo.todayDeaths)}
               total={numeral(countryInfo.deaths).format("0.0a")}
             />
         </div>
@@ -127,13 +126,12 @@ const App = () => {
             <h3>Live Cases by Country</h3>
              <Table countries={tableData}/>
             <h3>Worldwide new {casesType}</h3>
-            <LineGraph casesType={casesType}/>
+            <LineGraph className="app__graph" casesType={casesType}/>
           </div>
         </CardContent>
       </Card>
-      
-      
     </div>
+    
   );
 }
 

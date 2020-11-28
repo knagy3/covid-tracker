@@ -1,0 +1,5 @@
+/*ugly as hell but I could not solve it*/
+.app__graph > canvas {
+  margin-top: 15px !important;
+  height: 210px !important;
+}

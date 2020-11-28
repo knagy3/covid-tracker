@@ -3,6 +3,7 @@
   cursor: pointer;
 }
 
+/*gives margin all child except the last*/
 .infoBox:not(:last-child) {
   margin-right: 10px;
 }
@@ -20,7 +21,7 @@
 }
 
 .infoBox__cases {
-  color: #cc1034;
+  color: #e00a31fa;
   font-weight: 600;
   font-size: 1.75rem;
   margin-bottom: 0.5rem;
@@ -29,6 +30,6 @@
 .infoBox__total {
   color: #6c757d;
   font-weight: 700 !important;
-  font-size: 0.8rem !important;
+  font-size: 0.9rem !important;
   margin-top: 15px !important;
 }
